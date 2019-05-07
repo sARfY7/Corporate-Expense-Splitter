@@ -1,0 +1,34 @@
+<%- include('includes/common-head'); %>
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>LOGIN</h1>
+      <div class="form-container">
+        <form action="/login" method="POST">
+          <div class="form-group">
+            <label for="emp_id">Employee ID</label>
+            <input id="emp_id" class="<%= error? 'error': '' %>" type="text" name="emp_id" placeholder="Enter Employee ID" value="<%= employee? employee: "" %>" />
+            <div class="emp_id-error error-description"><%= error_msg? (error_field === "emp_id")? error_msg: "": '' %></div>
+          </div>
+          <div class="form-group">
+            <label for="pass">Password</label>
+            <input id="pass" class="<%= error? 'error': '' %>" type="password" name="pass" placeholder="Enter Password" />
+            <div id="pwd-strength-meter"></div>
+            <div class="pass-error error-description"><%= error_msg? (error_field === "pass")? error_msg: "": '' %></div>
+          </div>
+          <div class="form-group">
+            <input type="submit" onclick="validateInput()" value="Login" />
+            <div class="error-description"><%= error_msg? (error_field === "general")? error_msg: "": '' %></div>
+          </div>
+        </form>
+        <div class="other-links">
+          <div class="other-link forget-pwd"><a href="">Forgot Password?</a></div>
+          <div class="other-link create-new-account"><a href="/signup">Create New Account</a></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/main.js"></script>
+  </body>
+</html>

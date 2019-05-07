@@ -1,0 +1,8 @@
+<div class="nav">
+  <div class="nav-item <%= activeNav === "dashboard"? "active-nav" : "" %>"><a href="/">Home</a></div>
+  <div class="nav-item <%= activeNav === "add-expense"? "active-nav" : "" %>"><a href="/expense/add">Add Expense</a></div>
+  <div class="nav-item <%= activeNav === "view-expense"? "active-nav" : "" %>"><a href="/expense">View Expense</a></div>
+  <form action="/logout" method="POST">
+    <input type="submit" value="Logout">
+  </form>
+</div>

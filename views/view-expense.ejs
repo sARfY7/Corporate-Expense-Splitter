@@ -1,0 +1,53 @@
+<%- include("includes/common-head"); -%>
+<title>View Expense</title>
+</head>
+  <body>
+    <%- include("includes/nav"); -%>
+    <div class="container">
+            <h1 class="heading">Expenses</h1>
+            <table>
+                <thead>
+                    <th>Sr. No.</th>
+                    <th>Expense Name</th>
+                    <th>Amount</th>
+                    <th>Added By</th>
+                    <th>Employee Nos.</th>
+                    <th>Employees</th>
+                    <th>Reimbursed</th>
+                    <th>Proof</th>
+                    <% if (isAdmin) { %>
+                    <th>Action</th>
+                    <% } %>
+                </thead>
+                <tbody>
+                    <% expenses.forEach((expense, index) => { %>
+                    <tr>
+                        <td><%= index + 1 %></td>
+                        <td><%= expense.name %></td>
+                        <td><%= expense.amount %></td>
+                        <td><%= expense.addedBy %></td>
+                        <td><%= expense.dividedInto %></td> 
+                        <td><%= expense.dividedAmong %></td> 
+                        <td><%= expense.reimbursed %></td>
+                        <td>
+                            <% if (expense.proof != "Not Uploaded") { %>
+                                <a href="/proof/<%= expense.proof %>" target="_blank"><%= expense.proof %></a>
+                            <% } else { %>
+                                <%= expense.proof %>
+                            <% } %>
+                        </td>
+                        <% if (isAdmin) { %>
+                        <td>
+                            <button class="btn btn-small btn-positive" onclick="return approveReimbursement('<%= expense._id %>')" >Approve</button>
+                            <button class="btn btn-small btn-negative" onclick="return rejectReimbursement('<%= expense._id %>')" >Reject</button>
+                        </td>
+                        <% } %>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+    </div>
+
+    <script src="/js/view-expense.js"></script>
+  </body>
+</html>

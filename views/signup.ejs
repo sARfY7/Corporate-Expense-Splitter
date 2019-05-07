@@ -1,0 +1,38 @@
+<%- include('includes/common-head'); %>
+    <title>Signup</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>SIGNUP</h1>
+      <div class="form-container">
+        <form action="/signup" method="POST">
+          <div class="form-group">
+            <label for="emp_id">Employee ID</label>
+            <input id="emp_id" class="<%= error? 'error': '' %>" type="text" name="emp_id" placeholder="Enter Employee ID" />
+            <div class="emp_id-error error-description"><%= error_msg? (error_field === "emp_id")? error_msg: "": '' %></div>
+          </div>
+          <div class="form-group">
+            <label for="emp_name">Employee Name</label>
+            <input id="emp_name" class="<%= error? 'error': '' %>" type="text" name="emp_name" placeholder="Enter Employee Name" />
+            <div class="emp_name-error error-description"><%= error_msg? (error_field === "emp_name")? error_msg: "": '' %></div>
+          </div>
+          <div class="form-group">
+            <label for="pass">Password</label>
+            <input id="pass" class="<%= error? 'error': '' %>" type="password" name="pass" placeholder="Enter Password" onkeyup="validatePassword(this.value)" />
+            <div id="pwd-strength-meter"></div>
+            <div class="pass-error error-description"><%= error_msg? (error_field === "pass")? error_msg: "": '' %></div>
+          </div>
+          <div class="form-group">
+            <input type="submit" onclick="validateInput()" value="Signup" />
+          </div>
+        </form>
+        <div class="other-links">
+          <div class="other-link forget-pwd"><a href="">Forgot Password? Reset Here</a></div>
+          <div class="other-link login"><a href="/">Already Have an Account? Login Here</a></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/main.js"></script>
+  </body>
+</html>
